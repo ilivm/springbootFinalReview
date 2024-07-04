@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet dbms="h2" author="daniel.kaiser" id="1" context="challenge">
+        <comment>Task to create the customer table.</comment>
+        <createTable tableName="CUSTOMER">
+            <column name="ID" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NAME" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INSURANCE_NUMBER" type="varchar(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE_OF_BIRTH" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="INCEPTION_OF_POLICY" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
