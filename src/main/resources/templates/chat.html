@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <title>ChatRoom</title>
+</head>
+<body>
+<h1>Spring boot chat room</h1>
+<div class="d-flex flex-column align-items-end">
+    <a th:href="@{/logout}">Logout</a>
+</div>
+<div class="d-flex align-items-center">
+    <div class="d-inline-block">
+        <p >Username:</p>
+    </div>
+    <span class=""  style="width:50px;">
+    </span>
+    <div class="d-inline-block">
+        <span>
+            <p th:text="${username}"></p>
+        </span>
+    </div>
+</div>
+
+<form th:object="${chatForm}" th:action="@{/chat}" action="#" method="post">
+<!--
+    <label for="username">Username:</label>
+    <input th:field="*{userName}" id="username" type="text">
+-->
+    <label for="messageText">Message Text:</label>
+    <input th:field="*{messageText}" id="messageText" type="text">
+    <label for="messageType">Message Type: </label>
+    <select th:field="*{messageType}" id="messageType">
+        <option
+            th:each="messageType : ${MessageTypes}"
+            th:value="${messageType}"
+            th:text="${messageType.label}"
+        >
+            Say
+        </option>
+
+<!--        <option th:value="SAY" selected>Say</option>-->
+<!--        <option th:value="SHOUT">Shout</option>-->
+<!--        <option th:value="WHISPER">Whisper</option>-->
+    </select>
+    <input type="submit" value="Submit">
+</form>
+<h4 th:each="chatMsg : ${chatMessages}" th:text="${chatMsg}">Hello, homepage!</h4>
+<!--<h1 th:unless="${#lists.size(greetings) <= 5}" th:text="${enoughMessage}"> I think that's enough!</h1>-->
+</body>
+</html>
